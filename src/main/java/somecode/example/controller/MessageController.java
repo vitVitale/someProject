@@ -1,12 +1,12 @@
-package somecode.examplefromyoutube.controller;
+package somecode.example.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import somecode.examplefromyoutube.domain.Message;
-import somecode.examplefromyoutube.domain.Views;
-import somecode.examplefromyoutube.repo.MessageRepo;
+import somecode.example.domain.Message;
+import somecode.example.domain.Views;
+import somecode.example.repo.MessageRepo;
 
 import java.time.LocalDateTime;
 import java.util.List;

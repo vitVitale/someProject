@@ -1,4 +1,4 @@
-package somecode.examplefromyoutube.domain;
+package somecode.example.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;

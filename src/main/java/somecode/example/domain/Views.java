@@ -1,4 +1,4 @@
-package somecode.examplefromyoutube.domain;
+package somecode.example.domain;
 
 public final class Views {
     public interface Id {}
