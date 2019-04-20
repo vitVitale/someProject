@@ -1,5 +1,6 @@
 package somecode.example;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Когда;
 import org.junit.Ignore;
@@ -30,10 +31,18 @@ public class CucumberStepDefinitions  extends ApplicationTests {
         message.setText(msg);
 
         ResponseEntity<Message> response =
-                restTemplate.postForEntity("/message", message, Message.class);
+                restTemplate.postForEntity(thingsEndpoint(), message, Message.class);
 
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
         assertThat(response.getBody().getId(), notNullValue());
         assertThat(response.getBody().getText(), is(msg));
+    }
+
+    @Когда("^отправляем пачку сообщений:$")
+    public void postSeveralMessages(DataTable table) {
+        table.asList(String.class).forEach(msg -> {
+            assertThat(restTemplate.postForEntity(thingsEndpoint(), createMsg(msg), Message.class)
+                    .getStatusCode(), is(HttpStatus.OK));
+        });
     }
 }

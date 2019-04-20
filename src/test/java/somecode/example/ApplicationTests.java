@@ -27,13 +27,19 @@ public abstract class ApplicationTests {
 	@LocalServerPort
 	protected int port;
 
-	private String thingsEndpoint() {
+	protected String thingsEndpoint() {
 		return SERVER_URL + ":" + port + ENDPOINT;
 	}
 
 	int put(final String something) {
 		return restTemplate.postForEntity(thingsEndpoint(), something, Void.class).getStatusCodeValue();
 	}
+
+	public Message createMsg(String text) {
+        Message message = new Message();
+        message.setText(text);
+	    return message;
+    }
 
 	Message getContents() {
 		return restTemplate.getForEntity(thingsEndpoint(), Message.class).getBody();
